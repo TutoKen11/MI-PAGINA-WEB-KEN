@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanProject</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="LOGO.png" alt="UrbanProject">
+            <h1>UrbanProject</h1>
+        </div>
+        
+<nav class="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="camisas.html">Camisas</a>
+    <a href="pantalones.html">Pantalones</a>
+    <a href="zapatos.html">Zapatos</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="cuenta.html" class="active">Mi Cuenta</a>
+    <a href="carrito.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+    </a>
+</nav>
+
+    </header>
+
+    <main>
+        <section class="banner">
+            <h2>¡Nuestra colección!</h2>
+            <p>Descubre nuestros últimos modelos de moda</p>
+            <a href="#productos-destacados" class="btn">Ver colección</a>
+        </section>
+
+        <section id="productos-destacados" class="productos-destacados">
+            <h2>Productos Destacados</h2>
+            <div class="grid-productos">
+           
+                <div class="producto">
+                    <img src="camisa1º.webp" alt="Camisa de vestir">
+                    <h3>Camisa Urban Sreetwear</h3>
+                    <p>24.99€</p>
+                    <button class="btn-add-cart" data-id="1">Añadir al carrito</button>
+                </div>
+                
+            
+                <div class="producto">
+                    <img src="jeans.webp" alt="Pantalón jeans">
+                    <h3>Jeans Clásicos Urban</h3>
+                    <p>14.99€</p>
+                    <button class="btn-add-cart" data-id="2">Añadir al carrito</button>
+                </div>
+                
+              
+                <div class="producto">
+                    <img src="zapato urbano.jpg" alt="Zapatos casuales">
+                    <h3>Zapatos Urbanos Hombre</h3>
+                    <p>35€</p>
+                    <button class="btn-add-cart" data-id="3">Añadir al carrito</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>UrbanProject ofrece las últimas tendencias en moda a precios accesibles.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@UrbanProject.com</p>
+                <p>Teléfono: +34 678122456</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociales</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UrbanProject. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanProject</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="LOGO.png" alt="UrbanProject">
+            <h1>UrbanProject</h1>
+        </div>
+        
+<nav class="navbar">
+    <a href="index.html">Inicio</a>
+    <a href="camisas.html">Camisas</a>
+    <a href="pantalones.html">Pantalones</a>
+    <a href="zapatos.html">Zapatos</a>
+    <a href="contacto.html">Contacto</a>
+        <a href="cuenta.html">Mi Cuenta</a>
+    <a href="carrito.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+    </a>
+</nav>
+
+    </header>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            color: rgb(59, 59, 59);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* MAIN */
+        .cart-page {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .cart-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cart-items {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            min-height: 150px;
+        }
+
+        .cart-summary {
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .checkout-btn {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+
+    <main class="cart-page">
+        <section class="cart-section">
+            <h2>Tu Carrito de Compras</h2>
+            <div class="cart-items">
+              
+            </div>
+            <div class="cart-summary">
+                <h3>Resumen de Compra</h3>
+                <p class="cart-total">Total: $0.00</p>
+                <button class="btn checkout-btn">Proceder al Pago</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>UrbanProject ofrece las últimas tendencias en moda a precios accesibles.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Email: info@UrbanProject.com</p>
+                <p>Teléfono: +34 678122456</p>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociales</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 UrbanProject. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+document.querySelector('.checkout-btn').addEventListener('click', async () => {
+    const nombre = prompt("Por favor, introduce tu nombre para confirmar el pedido:");
+    if (!nombre) return alert("Debes ingresar un nombre para continuar.");
+
+    const totalTexto = document.querySelector('.cart-total').textContent;
+    const total = parseFloat(totalTexto.replace(/[^\d.]/g, '')) || 0;
+
+    try {
+        const response = await fetch('guardar_pedido.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, total })
+        });
+
+        const data = await response.json();
+        if (data.success) {
+            const mensaje = document.createElement("div");
+            mensaje.textContent = "✅ Solicitud de pedido enviada con éxito.";
+            mensaje.style.backgroundColor = "#d4edda";
+            mensaje.style.color = "#155724";
+            mensaje.style.border = "1px solid #c3e6cb";
+            mensaje.style.padding = "10px";
+            mensaje.style.marginTop = "15px";
+            mensaje.style.borderRadius = "5px";
+            document.querySelector('.cart-summary').appendChild(mensaje);
+
+            document.getElementById('cart-count').textContent = "0";
+            document.querySelector('.cart-items').innerHTML = "";
+            document.querySelector('.cart-total').textContent = "Total: $0.00";
+        } else {
+            alert(" Error al procesar tu pedido: " + (data.message || ''));
+        }
+    } catch (err) {
+        alert(" Error de red o del servidor.");
+        console.error(err);
+    }
+});
+</script>
+
+
+</body>
+</html>
